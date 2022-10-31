@@ -22,3 +22,5 @@ function entrar2(nome){
    
     area.innerHTML = nome+ "  " + texto;
 }
+
+lis
