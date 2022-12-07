@@ -1,19 +1,71 @@
+import React, { Component } from 'react';
 import './App.css';
-import logo from './logo.svg';
-import Yuri from './Yuri';
 
-function App() {
+class App extends Component {
+
+constructor(props){
+  super(props);
+  this.state = {
+    nome:"Yurii",
+    email:"Yurii@gmail.com",
+
+  }
+  this.changeState =this.changeState.bind(this);
+  this.reseteState =this.reseteState.bind(this);
+  this.changeInput =this.changeInput.bind(this);
+
+
+  }
+
+  changeState() {
+    this.setState({
+      nome: "Yuri Ramos"
+    })
+  }
+   reseteState(){
+  this.setState({
+  nome: "Yurii"
+  })
+}
+changeInput(event){
+  let target = event.target;
+  let index = target.name
+  this.setState({
+    [index]: target.value
+  });
+}
+  render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Meu Projeto em React
-        </p>
-      <Yuri/>
-      </header>
+      <div>
+        <form>
+            <label>
+              Nome: <input type="text"
+                             name='nome' 
+                             value={this.state.name}> 
+                             
+                             </input>
+            </label>
+            <label>
+              Nome: <input type="text"
+                             name='nome' 
+                             value={this.state.name}> </input>
+            </label>
+
+        </form>
+
+     {this.state.nome} - {this.state.email}
+
+      </div>
+
+      <div>
+        <button onClick={this.changeState}> Mudar estato</button>
+        <button onClick={this.reseteState}> Resetar estato</button>
+
+      </div>
     </div>
   );
+}
 }
 
 export default App;
